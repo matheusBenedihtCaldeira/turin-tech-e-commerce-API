@@ -1,4 +1,4 @@
-import { prismaClient } from "../../infra/database/prismaClient";
+import { prismaClient } from "../../../infra/database/prismaClient";
 type RegisterProductRequest={
     name: string;
     description: string;
@@ -12,10 +12,19 @@ export class RegisterProductUseCase{
     constructor(){}
 
     async execute(data: RegisterProductRequest){
+        const product = await prismaClient.product.findFirst({
+            where: {
+                bar_code: data.bar_code
+            }
+        })
+        if(product) throw new Error("Product already exists!")
         const productCreated = await prismaClient.product.create({
             data: {
                 ...data
             }
         })
+        console.log(productCreated);
+        return productCreated
     }
 }
+
