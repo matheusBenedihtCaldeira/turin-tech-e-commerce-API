@@ -8,7 +8,10 @@ export class DeleteProductController {
 
         try{
             const result = await useCase.execute(req.params.id)
-            return res.json(result)
+            return res.json({
+                "Status": "Product deleted",
+                "Product": result
+            })
         }catch(err){
             console.log(err);
             return res.status(400).json(err)
