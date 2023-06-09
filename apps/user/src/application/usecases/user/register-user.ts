@@ -12,6 +12,13 @@ export class RegisterUserUseCase {
     constructor(){}
 
     async execute({name, lastName, key,password}: RegisterUserRequest){
+
+        const user = await prismaClient.user.findFirst({
+            where: {
+                key: key
+            }
+        })
+        if(user) throw new Error("User already exists")
         const novoUser = new User({
             name, 
             lastName, 
