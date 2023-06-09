@@ -1,5 +1,3 @@
-import { before } from "node:test";
-
 interface UserProps {
     name: string;
     lastName: string;
