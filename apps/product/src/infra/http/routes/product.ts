@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { RegisterProductController } from "../../application/controllers/product/product-register.controller";
-import { DeleteProductController } from "../../application/controllers/product/product-delete.controller";
-import { IndexProductController } from "../../application/controllers/product/product-index.controller";
-import { UpdateProductController } from "../../application/controllers/product/product-update.controller";
+import { RegisterProductController } from "../../../application/controllers/product/product-register.controller";
+import { DeleteProductController } from "../../../application/controllers/product/product-delete.controller";
+import { IndexProductController } from "../../../application/controllers/product/product-index.controller";
+import { UpdateProductController } from "../../../application/controllers/product/product-update.controller";
 
 const router = Router();
 

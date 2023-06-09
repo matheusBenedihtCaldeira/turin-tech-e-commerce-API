@@ -1,11 +1,7 @@
 //Imports necessary for application
-import  express, { Router } from "express";
-import { router } from "./routes";
+import app from './app';
 
-const app = express();
-const PORT = 8080;
-app.use(express.json());
-app.use(router)
+const PORT = process.env.SERVER_PORT;
 
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}/`);
