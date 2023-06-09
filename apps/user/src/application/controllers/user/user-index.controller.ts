@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IndexUserUseCase } from "../usecases/user/index-user";
+import { IndexUserUseCase } from "../../usecases/user/index-user";
 
 export class UserIndexController {
     constructor(){}

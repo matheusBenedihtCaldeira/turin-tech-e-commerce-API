@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { RegisterUserUseCase } from "../usecases/user/register-user";
+import { RegisterUserUseCase } from "../../usecases/user/register-user";
 
 export class RegisterUserController {
     constructor(){}
