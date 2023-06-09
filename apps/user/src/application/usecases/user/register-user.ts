@@ -1,5 +1,5 @@
-import { User } from "../models/User";
-import { prismaClient } from "../../infra/database/prismaClient";
+import { User } from "../../models/User";
+import { prismaClient } from "../../../infra/database/prismaClient";
 
 type RegisterUserRequest = {
     name: string
