@@ -1,4 +1,3 @@
-import { decodedTextSpanIntersectsWith } from "typescript";
 import { prismaClient } from "../../../infra/database/prismaClient";
 import { Product } from "../../models/Product";
 type RegisterProductRequest={
