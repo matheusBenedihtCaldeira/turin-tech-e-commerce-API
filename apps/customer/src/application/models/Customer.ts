@@ -1,10 +1,4 @@
-interface CustomerProps {
-    name: string;
-    lastName: string;
-    email: string;
-    telefone: string;
-    senha: string;
-}
+import { CustomerProps } from "../interfaces/customer";
 
 export class Customer {
     private props: CustomerProps;
