@@ -3,6 +3,7 @@ import { RegisterCustomerController } from "../../../application/controllers/cus
 import { IndexCustomerController } from "../../../application/controllers/customer-index.controller";
 import { UpdateCustomerController } from "../../../application/controllers/customer-update.controller";
 import { DeleteCustomerController } from "../../../application/controllers/customer-delete.controller";
+import { GetCustomerController } from "../../../application/controllers/get-customer.controller";
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -11,6 +12,10 @@ router.get('/', (req, res) => {
 
 router.get('/customers/', (req, res) => {
     new IndexCustomerController().handle(req, res);
+})
+
+router.get('/customer/:id',(req, res) => {
+    new GetCustomerController().handle(req,res)
 })
 
 router.post('/customer/register', (req, res) => {
