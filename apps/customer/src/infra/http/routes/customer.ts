@@ -2,6 +2,7 @@ import { Router } from "express";
 import { RegisterCustomerController } from "../../../application/controllers/customer-register.controller";
 import { IndexCustomerController } from "../../../application/controllers/customer-index.controller";
 import { UpdateCustomerController } from "../../../application/controllers/customer-update.controller";
+import { DeleteCustomerController } from "../../../application/controllers/customer-delete.controller";
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -18,5 +19,9 @@ router.post('/customer/register', (req, res) => {
 
 router.put('/customer/edit/:id', (req, res) => {
     new UpdateCustomerController().handle(req,res)
+})
+
+router.delete('/customer/delete/:id', (req, res) => {
+    new DeleteCustomerController().handle(req,res)
 })
 export default router;
