@@ -1,5 +1,6 @@
 import { Customer } from "../models/Customer";
 import { prismaClient} from "../../infra/database/prismaClient";
+import { KafkaSendMessage } from "../../infra/messaging/provider/kafka/producer";
 
 type RegisterCustomerRequest = {
     name: string
@@ -35,7 +36,11 @@ export class RegisterCustomerUseCase {
                 telefone: newCustomer.telefone
             }
         })
-        console.log(customerRegistred)
+        
+
+        const kafkaProducer = new KafkaSendMessage();
+        await kafkaProducer.execute("CUSTOMER_CREATED", customerRegistred)
+
         return customerRegistred;
     }
 }
