@@ -1,9 +1,9 @@
-import { prismaClient} from "../../../infra/database/prismaClient";
+import { prismaClient } from "../../../infra/database/prismaClient";
 
-export class IndexUserUseCase{
-    constructor(){}
+export class IndexUserUseCase {
+  constructor() {}
 
-    async execute(){
-        return await prismaClient.user.findMany()
-    }
+  async execute() {
+    return await prismaClient.user.findMany();
+  }
 }

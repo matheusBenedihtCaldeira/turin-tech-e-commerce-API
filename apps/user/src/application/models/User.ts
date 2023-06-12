@@ -1,32 +1,30 @@
 interface UserProps {
-    name: string;
-    lastName: string;
-    key: string;
-    password: string;
+  name: string;
+  lastName: string;
+  key: string;
+  password: string;
 }
 
 export class User {
-    private props: UserProps;
+  private props: UserProps;
 
-    get name(): string {
-        return this.props.name;
-    }
+  get name(): string {
+    return this.props.name;
+  }
 
-    get lastName(): string {
-        return this.props.lastName;
-    }
+  get lastName(): string {
+    return this.props.lastName;
+  }
 
-    get key(): string {
-        return this.props.key;
-    }
+  get key(): string {
+    return this.props.key;
+  }
 
-    get password(): string {
-        return this.props.password;
-    }
+  get password(): string {
+    return this.props.password;
+  }
 
-
-
-    constructor(props: UserProps){
-        this.props = props;
-    }
+  constructor(props: UserProps) {
+    this.props = props;
+  }
 }

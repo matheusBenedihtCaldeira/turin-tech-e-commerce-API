@@ -7,23 +7,23 @@ import { GetProductController } from "../../../application/controllers/product/p
 
 const router = Router();
 
-router.get('/products', (req,res) => {
-    new IndexProductController().handle(req,res);
-})
+router.get("/products", (req, res) => {
+  new IndexProductController().handle(req, res);
+});
 
-router.get('/product/:id', (req,res) => {
-    new GetProductController().handle(req,res)
-})
+router.get("/product/:id", (req, res) => {
+  new GetProductController().handle(req, res);
+});
 
-router.post('/product/register', (req,res) => {
-    new RegisterProductController().handle(req,res)
-})
+router.post("/product/register", (req, res) => {
+  new RegisterProductController().handle(req, res);
+});
 
-router.delete('/product/delete/:id', (req,res) => {
-    new DeleteProductController().handle(req,res)
-})
+router.delete("/product/delete/:id", (req, res) => {
+  new DeleteProductController().handle(req, res);
+});
 
-router.put('/product/edit/:id', (req,res) => {
-    new UpdateProductController().handle(req,res)
-})
-export {router}
+router.put("/product/edit/:id", (req, res) => {
+  new UpdateProductController().handle(req, res);
+});
+export { router };

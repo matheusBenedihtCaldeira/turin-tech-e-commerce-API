@@ -6,21 +6,21 @@ import { UserDeleteController } from "../../../application/controllers/user/user
 import { GetUserController } from "../../../application/controllers/user/user-get.controller";
 const router = Router();
 
-router.post('/user/register', (req, res) => {
-    new RegisterUserController().handle(req,res);
-})
-router.put('/user/edit/:id', (req, res) => {
-    new UserUpdateController().handle(req,res);
-})
+router.post("/user/register", (req, res) => {
+  new RegisterUserController().handle(req, res);
+});
+router.put("/user/edit/:id", (req, res) => {
+  new UserUpdateController().handle(req, res);
+});
 
-router.get('/users/', (req,res) => {
-    new UserIndexController().handle(req,res);
-})
+router.get("/users/", (req, res) => {
+  new UserIndexController().handle(req, res);
+});
 
-router.get('/user/:id', (req,res) => {
-    new GetUserController().handle(req,res)
-})
-router.delete('/users/edit/delete/:id', (req,res) => {
-    new UserDeleteController().handle(req,res);
-})
+router.get("/user/:id", (req, res) => {
+  new GetUserController().handle(req, res);
+});
+router.delete("/users/edit/delete/:id", (req, res) => {
+  new UserDeleteController().handle(req, res);
+});
 export default router;
