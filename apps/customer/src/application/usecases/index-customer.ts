@@ -1,9 +1,9 @@
-import { prismaClient } from "../../infra/database/prismaClient";
+import { prismaClient } from '../../infra/database/prismaClient';
 
 export class IndexCustomerUseCase {
-    constructor() {}
+  constructor() {}
 
-    async execute(){
-        return await prismaClient.customer.findMany();
-    }
+  async execute() {
+    return await prismaClient.customer.findMany();
+  }
 }
