@@ -39,7 +39,10 @@ export class RegisterCustomerUseCase {
         
 
         const kafkaProducer = new KafkaSendMessage();
-        await kafkaProducer.execute("CUSTOMER_CREATED", customerRegistred)
+        await kafkaProducer.execute("CUSTOMER_CREATED", {
+            id: customerRegistred.id,
+            email: customerRegistred.email
+        })
 
         return customerRegistred;
     }
