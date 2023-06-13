@@ -1,5 +1,5 @@
 import { prismaClient } from '../../../../database/prismaClient';
-import { kafaConsumer } from '../kafka.consumer';
+import { kafkaConsumer } from '../kafka.consumer';
 
 type CustomerConsumer = {
   id: string;
@@ -8,7 +8,7 @@ type CustomerConsumer = {
 
 export async function registerCustomerConsumer() {
   console.log('CUSTOMER CONSUMER');
-  const consumer = await kafaConsumer('CUSTOMER_CREATED');
+  const consumer = await kafkaConsumer('CUSTOMER_CREATED');
   await consumer.run({
     eachMessage: async ({ message }) => {
       const messageToString = message.value!.toString();
