@@ -1,4 +1,4 @@
-import { kafka } from ".";
+import { kafka } from '.';
 
 export class KafkaSendMessage {
   async execute(topic: string, payload: any): Promise<void> {

@@ -14,3 +14,12 @@ model Customer {
 
   @@map("customers")
 }
+
+model Product {
+  id String @id @default(uuid())
+  name String
+  exeternalId String
+  bar_code String
+
+  @@map("products")
+}

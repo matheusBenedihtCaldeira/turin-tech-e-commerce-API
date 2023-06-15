@@ -1,5 +1,5 @@
 //Imports necessary for application
-import app from "./app";
+import app from './app';
 
 const PORT = process.env.SERVER_PORT;
 
