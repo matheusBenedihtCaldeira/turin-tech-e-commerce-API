@@ -2,7 +2,7 @@ import { OpenAIApi } from 'openai';
 import { configAi } from '../../config/openAi';
 const openAi = new OpenAIApi(configAi);
 
-export const gerarDescricao = async (nomeDoProduto: string) => {
+export const generateDescription = async (nomeDoProduto: string) => {
   const prompt = `Gere a descrição do seguinte produto ${nomeDoProduto}`;
 
   try {
