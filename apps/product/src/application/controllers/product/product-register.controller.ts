@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { RegisterProductUseCase } from "../../usecases/product/register-product";
+import { Request, Response } from 'express';
+import { RegisterProductUseCase } from '../../usecases/product/register-product';
 
 export class RegisterProductController {
   constructor() {}

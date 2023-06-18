@@ -1,9 +1,9 @@
 import { prismaClient } from '../../../infra/database/prismaClient';
 import { KafkaSendMessage } from '../../../infra/messaging/provider/kafka/producer';
+import { gerarDescricao } from '../../models/DescriptionGenerator';
 import { Product } from '../../models/Product';
 type RegisterProductRequest = {
   name: string;
-  description: string;
   price: number;
   quantity: number;
   bar_code: string;
@@ -21,7 +21,7 @@ export class RegisterProductUseCase {
     if (product) throw new Error('Product already exists!');
     const newProduct = new Product({
       name: data.name,
-      description: data.description,
+      description: await gerarDescricao(data.name),
       price: data.price,
       quantity: data.quantity,
       barCode: data.bar_code,

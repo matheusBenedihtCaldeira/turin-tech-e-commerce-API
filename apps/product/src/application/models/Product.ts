@@ -1,6 +1,6 @@
 interface ProductProps {
   name: string;
-  description: string;
+  description: any;
   price: number;
   quantity: number;
   barCode: string;
