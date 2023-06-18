@@ -1,5 +1,6 @@
-import { User } from "../../models/User";
-import { prismaClient } from "../../../infra/database/prismaClient";
+import { User } from '../../models/User';
+import { prismaClient } from '../../../infra/database/prismaClient';
+import { passwordHash } from '../../utils/passwordHash';
 
 type RegisterUserRequest = {
   name: string;
@@ -11,18 +12,18 @@ type RegisterUserRequest = {
 export class RegisterUserUseCase {
   constructor() {}
 
-  async execute({ name, lastName, key, password }: RegisterUserRequest) {
+  async execute(data: RegisterUserRequest) {
     const user = await prismaClient.user.findFirst({
       where: {
-        key: key,
+        key: data.key,
       },
     });
-    if (user) throw new Error("User already exists");
+    if (user) throw new Error('User already exists');
     const novoUser = new User({
-      name,
-      lastName,
-      key,
-      password,
+      name: data.name,
+      lastName: data.lastName,
+      key: data.key,
+      password: await passwordHash(data.password),
     });
     const userRegistred = await prismaClient.user.create({
       data: {

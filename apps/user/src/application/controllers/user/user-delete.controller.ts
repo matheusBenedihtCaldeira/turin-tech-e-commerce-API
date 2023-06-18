@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { DeleteUserUseCase } from "../../usecases/user/delete-user";
+import { Request, Response } from 'express';
+import { DeleteUserUseCase } from '../../usecases/user/delete-user';
 export class UserDeleteController {
   constructor() {}
 
@@ -9,7 +9,7 @@ export class UserDeleteController {
     try {
       const result = await useCase.execute(req.params.id);
       return res.json({
-        Status: "User deleted",
+        Status: 'User deleted',
         User: result,
       });
     } catch (err) {
