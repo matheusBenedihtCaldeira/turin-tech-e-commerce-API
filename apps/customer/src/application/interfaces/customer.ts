@@ -3,5 +3,5 @@ export interface CustomerProps {
   lastName: string;
   email: string;
   telefone: string;
-  senha: string;
+  senha: any;
 }

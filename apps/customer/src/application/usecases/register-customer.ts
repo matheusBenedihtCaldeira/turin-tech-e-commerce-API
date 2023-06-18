@@ -1,6 +1,7 @@
 import { Customer } from '../models/Customer';
 import { prismaClient } from '../../infra/database/prismaClient';
 import { KafkaSendMessage } from '../../infra/messaging/provider/kafka/producer';
+import { passwordHash } from '../utils/passwordHash';
 
 type RegisterCustomerRequest = {
   name: string;
@@ -25,7 +26,7 @@ export class RegisterCustomerUseCase {
       lastName: data.lastName,
       email: data.email,
       telefone: data.telefone,
-      senha: data.senha,
+      senha: await passwordHash(data.senha),
     });
     const customerRegistred = await prismaClient.customer.create({
       data: {
