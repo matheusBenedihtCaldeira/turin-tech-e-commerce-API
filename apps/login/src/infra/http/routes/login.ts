@@ -7,7 +7,7 @@ router.get('/teste', (req, res) => {
   res.send('Teste');
 });
 
-router.post('/login', (req, res) => {
+router.post('/login/user', (req, res) => {
   new AuthenticateUserController().handle(req, res);
 });
 export default router;

@@ -2,7 +2,7 @@ import { EachMessagePayload } from 'kafkajs';
 import { kafka } from '..';
 import { prismaClient } from '../../../../database/prismaClient';
 
-const consumer = kafka.consumer({ groupId: 'ORDER_APP' });
+const consumer = kafka.consumer({ groupId: 'LOGIN_APP' });
 
 type CustomerConsumer = {
   email: string;
@@ -26,7 +26,16 @@ const runConsumer = async () => {
       console.log(`MESSSAGE: ${message}`);
       if (payload.topic === 'CUSTOMER_CREATED') {
         const customer = JSON.parse(message) as CustomerConsumer;
-        console.log(customer);
+        try {
+          await prismaClient.customer.create({
+            data: {
+              email: customer.email,
+              password: customer.password,
+            },
+          });
+        } catch (err) {
+          console.log(err);
+        }
       } else if (payload.topic === 'USER_CREATED') {
         const user = JSON.parse(message) as UserConsumer;
         try {

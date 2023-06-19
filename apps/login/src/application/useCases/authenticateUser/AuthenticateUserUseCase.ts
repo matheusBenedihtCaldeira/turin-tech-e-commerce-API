@@ -14,9 +14,10 @@ export class AuthenticateUserUseCase {
         key: data.key,
       },
     });
-    if (!userExists) throw new Error('Key or  Password incorrect');
-    const passwordMatch = compare(data.password, userExists.password);
-    if (!passwordMatch) throw new Error('Key or  Password incorrect');
+    if (!userExists) return console.log('usuario invalido');
+    const passwordMatch = await compare(data.password, userExists.password);
+
+    if (!passwordMatch) return console.log('Senha invalida');
     const token = sign({}, '0e9f655d-198d-47e7-94fc-abc6ff5d4a62', {
       subject: userExists.id,
       expiresIn: '1d',
