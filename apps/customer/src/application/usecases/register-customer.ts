@@ -42,6 +42,7 @@ export class RegisterCustomerUseCase {
     await kafkaProducer.execute('CUSTOMER_CREATED', {
       id: customerRegistred.id,
       email: customerRegistred.email,
+      password: customerRegistred.senha,
     });
 
     return customerRegistred;

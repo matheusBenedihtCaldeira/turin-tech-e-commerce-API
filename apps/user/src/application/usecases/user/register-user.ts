@@ -1,6 +1,7 @@
 import { User } from '../../models/User';
 import { prismaClient } from '../../../infra/database/prismaClient';
 import { passwordHash } from '../../utils/passwordHash';
+import { KafkaSendMessage } from '../../../infra/messaging/provider/kafka/producer';
 
 type RegisterUserRequest = {
   name: string;
@@ -33,7 +34,12 @@ export class RegisterUserUseCase {
         password: novoUser.password,
       },
     });
-    console.log(userRegistred);
+
+    const kafkaProducer = new KafkaSendMessage();
+    await kafkaProducer.execute('USER_CREATED', {
+      key: userRegistred.key,
+      password: userRegistred.password,
+    });
     return userRegistred;
   }
 }
