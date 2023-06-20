@@ -18,10 +18,15 @@ export class AuthenticateUserUseCase {
     const passwordMatch = await compare(data.password, userExists.password);
 
     if (!passwordMatch) return console.log('Senha invalida');
-    const token = sign({}, '0e9f655d-198d-47e7-94fc-abc6ff5d4a62', {
-      subject: userExists.id,
-      expiresIn: '1d',
-    });
+    const { key, password } = userExists;
+    const token = sign(
+      { key, password },
+      '0e9f655d-198d-47e7-94fc-abc6ff5d4a62',
+      {
+        subject: userExists.id,
+        expiresIn: '1d',
+      },
+    );
     return { token };
   }
 }
