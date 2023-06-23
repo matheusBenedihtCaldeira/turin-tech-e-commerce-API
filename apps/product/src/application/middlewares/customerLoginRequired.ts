@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
+const CUSTOMER_SECRET_TOKEN = process.env.CUSTOMER_SECRET_TOKEN as string;
 export default async (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
   if (!authorization) {
@@ -10,7 +13,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   }
   const [, token] = authorization.split(' ');
   try {
-    verify(token, '0e9f655d-198d-47e7-94fc-abc6ff5d4a62');
+    verify(token, CUSTOMER_SECRET_TOKEN);
     return next();
   } catch (err) {
     return res.status(401).json({
