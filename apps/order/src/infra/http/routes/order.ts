@@ -24,7 +24,7 @@ router.put('/orders/edit', customerLogin, (req, res) => {
   new UpdateOrderController().handle(req, res);
 });
 
-router.delete('/order/edit/delete/:id', (req, res) => {
+router.delete('/order/edit/delete/:id', customerLogin, (req, res) => {
   new DelteOrderController().handle(req, res);
 });
 
