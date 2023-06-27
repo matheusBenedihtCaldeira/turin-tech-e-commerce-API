@@ -1,4 +1,4 @@
-import { prismaClient } from "../../../infra/database/prismaClient";
+import { prismaClient } from '../../../infra/database/prismaClient';
 
 export class DeleteProductUseCase {
   constructor() {}
@@ -10,7 +10,7 @@ export class DeleteProductUseCase {
       },
     });
     if (!productExists) {
-      throw new Error("Product does not exist");
+      throw new Error('Product does not exist');
     }
     return await prismaClient.product.delete({
       where: {

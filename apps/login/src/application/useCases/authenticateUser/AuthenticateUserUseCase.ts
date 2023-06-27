@@ -2,7 +2,6 @@ import { prismaClient } from '../../../infra/database/prismaClient';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
 import dotenv from 'dotenv';
-import { json } from 'node:stream/consumers';
 
 dotenv.config();
 const TOKEN = process.env.USER_SECRET_TOKEN as string;

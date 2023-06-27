@@ -4,14 +4,11 @@ import { IndexCustomerController } from '../../../application/controllers/custom
 import { UpdateCustomerController } from '../../../application/controllers/customer-update.controller';
 import { DeleteCustomerController } from '../../../application/controllers/customer-delete.controller';
 import { GetCustomerController } from '../../../application/controllers/get-customer.controller';
-import loginRequired from '../../../application/middlewares/userLoginRequired';
+import userLoginRequired from '../../../application/middlewares/userLoginRequired';
+import customerLoginRequired from '../../../application/middlewares/customerLoginRequired';
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello world');
-});
-
-router.get('/customers/', loginRequired, (req, res) => {
+router.get('/customers/', userLoginRequired, (req, res) => {
   new IndexCustomerController().handle(req, res);
 });
 
@@ -23,11 +20,11 @@ router.post('/customer/register', (req, res) => {
   new RegisterCustomerController().handle(req, res);
 });
 
-router.put('/customer/edit/:id', (req, res) => {
+router.put('/customer/edit/:id', customerLoginRequired, (req, res) => {
   new UpdateCustomerController().handle(req, res);
 });
 
-router.delete('/customer/delete/:id', (req, res) => {
+router.delete('/customer/delete/:id', customerLoginRequired, (req, res) => {
   new DeleteCustomerController().handle(req, res);
 });
 export default router;
