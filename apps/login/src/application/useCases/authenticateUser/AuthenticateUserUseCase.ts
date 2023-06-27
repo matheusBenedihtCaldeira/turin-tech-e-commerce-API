@@ -2,6 +2,8 @@ import { prismaClient } from '../../../infra/database/prismaClient';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
 import dotenv from 'dotenv';
+import { json } from 'node:stream/consumers';
+
 dotenv.config();
 const TOKEN = process.env.USER_SECRET_TOKEN as string;
 interface IUserRequest {
@@ -19,7 +21,7 @@ export class AuthenticateUserUseCase {
     if (!userExists) return console.log('usuario invalido');
     const passwordMatch = await compare(data.password, userExists.password);
 
-    if (!passwordMatch) return console.log('Senha invalida');
+    if (!passwordMatch) throw new Error('Senha invalida');
     const token = sign({}, TOKEN, {
       subject: userExists.id,
       expiresIn: '1d',

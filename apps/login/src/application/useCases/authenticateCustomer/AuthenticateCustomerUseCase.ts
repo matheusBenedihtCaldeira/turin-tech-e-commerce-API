@@ -18,7 +18,7 @@ export class AuthenticateCustomerUseCase {
     });
     if (!customerExist) return console.log('Usuario não encontrado');
     const passwordMatch = await compare(data.password, customerExist.password);
-    if (!passwordMatch) return console.log('Senha incorreta');
+    if (!passwordMatch) throw new Error('Senha invalida');
     const token = sign({}, TOKEN, {
       subject: customerExist.id,
       expiresIn: '1d',
