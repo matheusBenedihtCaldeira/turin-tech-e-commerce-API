@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './routes/customer';
+import router from './routes/order';
 import dotenv from 'dotenv';
 
 dotenv.config();

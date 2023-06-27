@@ -11,10 +11,10 @@ model Customer {
   id String @id @default(uuid())
   name String
   lastName String
-  email String 
+  email String
   telefone String
   senha String
   createdAt DateTime @default(now())
-
   @@map("customers")
 }
+
