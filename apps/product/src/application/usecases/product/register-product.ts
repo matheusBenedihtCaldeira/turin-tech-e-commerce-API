@@ -40,6 +40,7 @@ export class RegisterProductUseCase {
     await kafkaProducer.execute('PRODUCT_CREATED', {
       id: productCreated.id,
       name: productCreated.name,
+      price: productCreated.price,
       bar_code: productCreated.bar_code,
     });
     return productCreated;
