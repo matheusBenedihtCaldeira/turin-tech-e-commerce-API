@@ -12,6 +12,7 @@ type CustomerConsumer = {
 type ProductConsumer = {
   id: string;
   name: string;
+  price: number;
   bar_code: string;
 };
 const runConsumer = async () => {
@@ -43,6 +44,7 @@ const runConsumer = async () => {
           await prismaClient.product.create({
             data: {
               name: product.name,
+              price: product.price,
               exeternalId: product.id,
               bar_code: product.bar_code,
             },
