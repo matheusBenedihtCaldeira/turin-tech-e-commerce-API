@@ -18,6 +18,7 @@ model Customer {
 model Product {
   id String @id @default(uuid())
   name String
+  price Float
   exeternalId String
   bar_code String
 
