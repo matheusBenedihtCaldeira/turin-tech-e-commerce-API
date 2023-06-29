@@ -31,8 +31,8 @@ model Order {
   customer Customer @relation(fields: [customerId], references: [id])
   createdAt DateTime @default(now())
   customerId String
-
   orderItems OrderItems[]
+  total Float
   @@map("orders")
 }
 
