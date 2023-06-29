@@ -1,4 +1,5 @@
 import { prismaClient } from '../../infra/database/prismaClient';
+import { Order } from '../models/Order';
 
 type CreateOrderRequest = {
   customerId: string;
@@ -12,12 +13,17 @@ export class CreateOrderUseCase {
   constructor() {}
 
   async execute(data: CreateOrderRequest) {
+    const newOrder = new Order({
+      customerId: data.customerId,
+      items: data.items,
+    });
+
     const order = await prismaClient.order.create({
       data: {
-        customerId: data.customerId,
+        customerId: newOrder.customerId,
         orderItems: {
           createMany: {
-            data: data.items,
+            data: newOrder.items,
           },
         },
       },

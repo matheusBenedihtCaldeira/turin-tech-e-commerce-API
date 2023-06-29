@@ -3,9 +3,7 @@ interface IOrderProps {
   items: {
     productId: string;
     quantity: number;
-    price: any;
   };
-  total: number;
 }
 
 export class Order {
@@ -16,9 +14,6 @@ export class Order {
   }
   get items(): { productId: string; quantity: number } {
     return this.props.items;
-  }
-  get total(): number {
-    return this.props.items.price * this.props.items.quantity;
   }
   constructor(props: IOrderProps) {
     this.props = props;
