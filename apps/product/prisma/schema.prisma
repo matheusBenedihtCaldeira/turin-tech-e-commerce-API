@@ -15,6 +15,15 @@ model Product {
   quantity Int
   bar_code String @unique
   createdAt DateTime @default(now())
-
+  photos Photo[]
   @@map("products")
+}
+
+model Photo {
+  id String @id @default(uuid())
+  originalname String
+  fileName String
+  product Product @relation(fields: [productId], references: [id])
+  productId String
+  createdAt DateTime @default(now())
 }
