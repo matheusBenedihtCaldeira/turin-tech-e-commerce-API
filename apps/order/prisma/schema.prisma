@@ -32,7 +32,6 @@ model Order {
   createdAt DateTime @default(now())
   customerId String
   orderItems OrderItems[]
-  total Float
   @@map("orders")
 }
 
