@@ -21,9 +21,11 @@ model Product {
 
 model Photo {
   id String @id @default(uuid())
-  originalname String
   fileName String
+  originalName String
   product Product @relation(fields: [productId], references: [id])
   productId String
   createdAt DateTime @default(now())
+
+  @@map("photos")
 }

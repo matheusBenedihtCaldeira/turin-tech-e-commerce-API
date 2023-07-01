@@ -5,8 +5,11 @@ import { IndexProductController } from '../../../application/controllers/product
 import { UpdateProductController } from '../../../application/controllers/product/product-update.controller';
 import { GetProductController } from '../../../application/controllers/product/product-get.controller';
 import userLoginRequired from '../../../application/middlewares/userLoginRequired';
-
+import { PhotoController } from '../../../application/controllers/photo/photo-upload.controller';
+import uploadsConfig from '../../../config/multer';
+import multer from 'multer';
 const router = Router();
+const upload = multer(uploadsConfig);
 
 router.get('/products', (req, res) => {
   new IndexProductController().handle(req, res);
@@ -26,5 +29,9 @@ router.delete('/product/delete/:id', userLoginRequired, (req, res) => {
 
 router.put('/product/edit/:id', userLoginRequired, (req, res) => {
   new UpdateProductController().handle(req, res);
+});
+
+router.post('/photo/upload', upload.single('fileName'), (req, res) => {
+  new PhotoController().handle(req, res);
 });
 export { router };

@@ -7,6 +7,7 @@ type RegisterProductRequest = {
   price: number;
   quantity: number;
   bar_code: string;
+  photo: Express.Multer.File;
 };
 
 export class RegisterProductUseCase {

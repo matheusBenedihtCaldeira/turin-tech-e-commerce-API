@@ -3,7 +3,7 @@ import { Options, diskStorage } from 'multer';
 import { extname, resolve } from 'path';
 import { randomBytes } from 'crypto';
 
-export const config = {
+export default {
   dest: resolve(__dirname, '..', '..', 'uploads', 'images'),
   storage: diskStorage({
     destination: (req, file, cb) => {
@@ -22,4 +22,4 @@ export const config = {
   limits: {
     fileSize: 5 * 1024 * 1024,
   },
-};
+} as Options;
