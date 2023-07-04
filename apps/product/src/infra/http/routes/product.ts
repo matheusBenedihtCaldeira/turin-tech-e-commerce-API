@@ -31,7 +31,12 @@ router.put('/product/edit/:id', userLoginRequired, (req, res) => {
   new UpdateProductController().handle(req, res);
 });
 
-router.post('/photo/upload', upload.single('fileName'), (req, res) => {
-  new PhotoController().handle(req, res);
-});
+router.post(
+  '/photo/upload',
+  userLoginRequired,
+  upload.single('fileName'),
+  (req, res) => {
+    new PhotoController().handle(req, res);
+  },
+);
 export { router };
