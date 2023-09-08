@@ -1,6 +1,3 @@
-# Turin Tech
-Turin Tech aims to promote innovation and technological solutions for a connected and efficient world. We believe that every technological choice matters and has a significant impact. That's why we carefully select products from brands that share the same values of sustainability and commitment to energy efficiency.
-
 # Application
 Turin Tech is an e-commerce platform that offers a diverse selection of products, including peripherals and hardware components, facilitating the adoption of a connected and efficient lifestyle for our customers. Our platform is designed to be scalable and to provide an intuitive and convenient shopping experience
 
